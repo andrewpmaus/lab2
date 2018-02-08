@@ -1,4 +1,4 @@
-from numpy import cos, sin
+from numpy import cos, sin, pi
 import pygame
 from colors import *
 
@@ -12,7 +12,8 @@ class Launcher:
         self.x = x
         self.y = y
         self.magnitude = 100
-        self.angle = -45
+        self.angle = 45
+        self.width=4
         # the launcher is located at (x,y)
         # with the initial state:
         # magnitude = 20
@@ -29,11 +30,14 @@ class Launcher:
             self.angle += delta
             # adjust the angle
             # within MIN / MAX bounds
+    
+    def draw(self, surf):
+       # pygame.draw.line(surf,BROWN,(self.x,self.y),((self.x + self.magnitude *cos(self.angle*3.14/180.0)), (self.y + self.magnitude * sin(self.angle*3.14/180.0))), 4)
+        dx = self.magnitude*cos(self.angle*pi/180)
+        dy = self.magnitude*sin(self.angle*pi/180)
+        pygame.draw.line(surf, BROWN, (self.x,self.y),(self.x+dx,self.y-dy),self.width)
 
     def fire(self, rock):
-        rock.v_x = ...
-        rock.v_y = ...
-        pygame.draw.line(surf,BROWN,(self.x,self.y),((self.x + self.magnitude *cos(self.angle*3.14/180.0)), (self.y + self.magnitude * sin(self.angle*3.14/180.0))), 4)
+        rock.v_x = self.magnitude*cos(self.angle*pi/180)
+        rock.v_y = self.magnitude*sin(self.angle*pi/180)
         
-    def draw(self, surf):
-        pygame.draw.line(surf,BROWN,(self.x,self.y),((self.x + self.magnitude *cos(self.angle*3.14/180.0)), (self.y + self.magnitude * sin(self.angle*3.14/180.0))), 4)

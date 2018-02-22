@@ -4,4 +4,4 @@ GRASS_GREEN = (48,96,41)
 BROWN       = (139,69,19)
 BLACK       = (0,0,0)
 GREY        = (128,128,128)
-ROCK_COLOR = GREY
+RED         = (255,0,0)

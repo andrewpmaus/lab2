@@ -32,12 +32,11 @@ class Launcher:
             # within MIN / MAX bounds
     
     def draw(self, surf):
-       # pygame.draw.line(surf,BROWN,(self.x,self.y),((self.x + self.magnitude *cos(self.angle*3.14/180.0)), (self.y + self.magnitude * sin(self.angle*3.14/180.0))), 4)
         dx = self.magnitude*cos(self.angle*pi/180)
         dy = self.magnitude*sin(self.angle*pi/180)
         pygame.draw.line(surf, BROWN, (self.x,self.y),(self.x+dx,self.y-dy),self.width)
 
     def fire(self, rock):
         rock.v_x = self.magnitude*cos(self.angle*pi/180)
-        rock.v_y = self.magnitude*sin(self.angle*pi/180)
+        rock.v_y = -1*self.magnitude*sin(self.angle*pi/180)
         
